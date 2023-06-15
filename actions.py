@@ -7,7 +7,7 @@ import controller
 def new_window_contact():
     window = tk.Tk()
     window.title("Contacts")
-    window.geometry("800x800")
+    window.geometry("800x400")
 
     # определяем столбцы
 
@@ -28,7 +28,7 @@ def new_window_contact():
 
 
     close_button = ttk.Button(window, text="Закрыть окно", command=lambda: window.destroy())
-    close_button.pack(anchor="center", expand=1)
+    close_button.pack(anchor="se", padx=20, pady=20)
 
     window.mainloop()
 
@@ -37,7 +37,7 @@ contact = []
 
 def save_new_contact():
 
-
+    new_contact = []
     def add_contact():
         global contact
 
@@ -116,7 +116,7 @@ def save_new_contact():
 
 
     close_button = ttk.Button(frame, text="Закрыть окно", command=lambda: window_new_contact.destroy())
-    close_button.pack(anchor="center", expand=1)
+    close_button.grid(row=12, column=3)
 
     window_new_contact.mainloop()
 

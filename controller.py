@@ -14,8 +14,7 @@ def open_file():
         global info
         global info_table
         info = file.read()
-        info_table =[item.split(':') for item in info.split('\n')]
-        print(info_table)
+        info_table =[item.split(':') for item in info.split('\n') if item !='']
 
 def save_file():
     with open(path, 'w', encoding='utf-8') as file:
@@ -42,8 +41,9 @@ def start_search():
         for person in info_table:
             for item in person:
                 if search_contact and search_contact.lower() in item.lower():
-                    res.append(person)
-                    continue
+                    if person not in res:
+                        res.append(person)
+
 
 
         if res:
@@ -96,6 +96,9 @@ def start_search():
         command=find_contact
     )
     cal_btn.grid(row=9, column=2)
+
+    close_button = ttk.Button(window_search, text="Закрыть окно", command=lambda: window_search.destroy())
+    close_button.pack(anchor=tk.S, expand=1)
 
     window_search.mainloop()
 
@@ -251,7 +254,7 @@ def change_person():
             )
             cal_btn.grid(row=9, column=2)
             close_button = ttk.Button(frame, text="Закрыть окно", command=lambda: window_change_contact.destroy())
-            close_button.pack(anchor="center", expand=1)
+            close_button.grid(row=12, column=3)
 
             window_change_contact.mainloop()
 
@@ -260,7 +263,7 @@ def change_person():
             messagebox.showinfo('Message', 'Контакт невозможно изменить!')
 
 
-    change_button = tk.Button(window_change, text='Удалить', command=change_but)
+    change_button = tk.Button(window_change, text='Изменить', command=change_but)
     change_button.pack(anchor="center")
 
 
