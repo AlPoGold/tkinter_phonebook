@@ -77,11 +77,4 @@ btn8 = tk.Button(frame_main, text="8 EXIT",bg='brown1', command=finish)
 btn8.grid(row=4, column=2, sticky="ew")
 
 
-
-
-
-
-
-
-
 root.mainloop()

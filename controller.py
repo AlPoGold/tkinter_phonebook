@@ -14,12 +14,17 @@ def open_file():
         global info
         global info_table
         info = file.read()
-        info_table =[item.split(':') for item in info.split('\n') if item !='']
+        if not info:
+            messagebox.showerror('Ошибка', 'Телефонная книга пуста!')
+        else:
+            info_table =[item.split(':') for item in info.split('\n') if item !='']
+            messagebox.showinfo('Открытие', 'Телефонная книга открыта!')
 
 def save_file():
     with open(path, 'w', encoding='utf-8') as file:
         global info_table
         data = [':'.join(item) for item in info_table]
+        messagebox.showinfo('Сохранение', 'Телефонная книга сохранена!')
         print(*data, file=file, sep='\n')
 
 def max_id(data: list):

@@ -54,8 +54,8 @@ def save_new_contact():
 
         messagebox.showinfo('Message', 'Новый контакт добавлен!')
         controller.info_table.append(new_contact)
-        print(new_contact)
-        print(controller.info_table)
+        # print(new_contact)
+        # print(controller.info_table)
 
     window_new_contact = tk.Tk()
     window_new_contact.title('Добавление нового контакта')
